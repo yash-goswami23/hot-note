@@ -1,13 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:hot_note/core/theme/app_colors.dart';
-import 'package:hot_note/data/models/task.dart';
+import 'package:hot_note/data/models/note.dart';
 
-class ShowTaskCard extends StatelessWidget {
+class ShowNoteCard extends StatelessWidget {
   final VoidCallback onTap;
-  final Task task;
-  const ShowTaskCard({super.key, required this.onTap, required this.task});
+  final Note note;
+  const ShowNoteCard({super.key, required this.onTap, required this.note});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class ShowTaskCard extends StatelessWidget {
                 SizedBox(
                   width: 300, // Adjust width based on your layout needs
                   child: Text(
-                    task.title,
+                    note.title,
                     style: TextStyle(fontSize: 16, overflow: TextOverflow.fade),
                     maxLines: 1, // Ensure text is confined to one line
                     softWrap: false, // Prevent text from wrapping
@@ -37,7 +35,7 @@ class ShowTaskCard extends StatelessWidget {
                 SizedBox(
                   width: 250,
                   child: Text(
-                    task.desc,
+                    note.desc,
                     style: TextStyle(overflow: TextOverflow.ellipsis),
                     maxLines: 1,
                     softWrap: false,
@@ -46,9 +44,9 @@ class ShowTaskCard extends StatelessWidget {
               ],
             ),
             Text(
-              task.isUploaded ? "Uploaded" : "Queued",
+              note.isUploaded ? "Uploaded" : "Queued",
               style: TextStyle(
-                color: task.isUploaded ? AppColors.uploaded : AppColors.queued,
+                color: note.isUploaded ? AppColors.uploaded : AppColors.queued,
               ),
             ),
           ],

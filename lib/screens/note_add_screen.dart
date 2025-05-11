@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hot_note/bloc/home/home_bloc.dart';
 import 'package:hot_note/core/routes/app_routes.dart';
 import 'package:hot_note/core/theme/app_colors.dart';
+import 'package:hot_note/core/utils/show_toast.dart';
+import 'package:hot_note/data/models/note.dart';
 
-class NoteAddScreen extends StatelessWidget {
+class NoteAddScreen extends StatefulWidget {
   const NoteAddScreen({super.key});
+
+  @override
+  State<NoteAddScreen> createState() => _NoteAddScreenState();
+}
+
+class _NoteAddScreenState extends State<NoteAddScreen> {
+  final titleController = TextEditingController();
+
+  final descController = TextEditingController();
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    descController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +41,7 @@ class NoteAddScreen extends StatelessWidget {
           children: [
             SizedBox(height: 15),
             TextField(
+              controller: titleController,
               style: TextStyle(fontSize: 16),
               cursorColor: AppColors.textSecondary,
               decoration: InputDecoration(
@@ -43,6 +64,7 @@ class NoteAddScreen extends StatelessWidget {
             SizedBox(height: 10),
             Expanded(
               child: TextField(
+                controller: descController,
                 maxLines: 300,
                 style: TextStyle(fontSize: 16),
                 cursorColor: AppColors.textSecondary,
@@ -59,7 +81,18 @@ class NoteAddScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go(AppRoutes.dashboard),
+        onPressed: () {
+          final String title = titleController.text.trim();
+          final String desc = descController.text.trim();
+          print("$title, $desc");
+          if (title.isNotEmpty && desc.isNotEmpty) {
+            final note = Note(title: title, desc: desc);
+            context.read<HomeBloc>().add(AddNoteEvent(note));
+            context.go(AppRoutes.home);
+          } else {
+            showToast(context: context, msg: "Enter Title and Description");
+          }
+        },
         elevation: 2,
         child: Icon(Icons.check, color: AppColors.textPrimary),
       ),

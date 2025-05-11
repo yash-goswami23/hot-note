@@ -71,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   } else if (state is AuthSuccess) {
                     print("all state ${state.user} ");
 
-                    context.go(AppRoutes.dashboard);
+                    context.go(AppRoutes.home);
                   } else if (state is AuthFailure) {
                     showToast(context: context, msg: state.error);
                   }

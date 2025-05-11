@@ -5,14 +5,14 @@ import 'package:hot_note/screens/home_screen.dart';
 import 'package:hot_note/screens/note_add_screen.dart';
 
 class AppRoutes {
-  static final String dashboard = '/dashboard';
+  static final String home = '/home';
   static final String addNote = '/addnote';
   static final String auth = '/';
   static GoRouter router(User? user) => GoRouter(
-    initialLocation: user != null ? dashboard : auth,
+    initialLocation: user != null ? home : auth,
     routes: [
       GoRoute(path: auth, builder: (context, state) => AuthScreen()),
-      GoRoute(path: dashboard, builder: (context, state) => HomeScreen()),
+      GoRoute(path: home, builder: (context, state) => HomeScreen()),
       GoRoute(path: addNote, builder: (context, state) => NoteAddScreen()),
     ],
   );
