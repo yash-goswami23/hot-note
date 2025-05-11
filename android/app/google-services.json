@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "275273850067",
+    "project_id": "hot-note-bcc05",
+    "storage_bucket": "hot-note-bcc05.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275273850067:android:b702fe3a6fd233e0788826",
+        "android_client_info": {
+          "package_name": "com.example.hot_note"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9NTDsSdpgxpt08woJQPzNrIeUHbepxk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
