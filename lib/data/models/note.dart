@@ -1,7 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
 
-part 'note.g.dart'; // Links to generated file
-// part 'task.g.dart';
+part 'note.g.dart';
 
 class Task {
   final String id;
@@ -37,4 +37,13 @@ class Note {
     required this.desc,
     this.isUploaded = false,
   });
+
+  Note copyWith({int? id, String? title, String? desc, bool? isUploaded}) {
+    return Note(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      desc: desc ?? this.desc,
+      isUploaded: isUploaded ?? this.isUploaded,
+    );
+  }
 }

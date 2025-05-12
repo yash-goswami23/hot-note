@@ -22,7 +22,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final user = await _authService.userAuth(event.email, event.password);
       if (user != null) {
         emit(AuthSuccess(user));
-      } else {
+      } 
+      else {
         emit(AuthFailure("Invalid email or password"));
       }
     } catch (e) {

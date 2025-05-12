@@ -73,6 +73,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
                     context.go(AppRoutes.home);
                   } else if (state is AuthFailure) {
+                    isLoading = false;
                     showToast(context: context, msg: state.error);
                   }
                 },

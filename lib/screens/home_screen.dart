@@ -5,7 +5,7 @@ import 'package:hot_note/bloc/auth/auth_bloc.dart';
 import 'package:hot_note/bloc/home/home_bloc.dart';
 import 'package:hot_note/core/common/custom_button.dart';
 import 'package:hot_note/core/common/loader.dart';
-import 'package:hot_note/core/common/task_card.dart';
+import 'package:hot_note/core/common/note_card.dart';
 import 'package:hot_note/core/routes/app_routes.dart';
 import 'package:hot_note/core/theme/app_colors.dart';
 import 'package:hot_note/core/utils/show_toast.dart';
@@ -47,6 +47,9 @@ class HomeScreen extends StatelessWidget {
                             txt: "Yes",
                             onTap: () {
                               context.read<AuthBloc>().add(Logout());
+                              context.read<HomeBloc>().add(
+                                DeleteAllLcoalNotes(),
+                              );
                               context.go(AppRoutes.auth);
                             },
                           ),

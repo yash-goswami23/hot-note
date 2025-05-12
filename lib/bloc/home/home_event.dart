@@ -1,16 +1,20 @@
 part of 'home_bloc.dart';
 
-@immutable
-abstract class HomeEvent {}
+abstract class HomeEvent extends Equatable {
+  const HomeEvent();
 
-final class AddNoteEvent extends HomeEvent {
+  @override
+  List<Object> get props => [];
+}
+
+class AddNoteEvent extends HomeEvent {
   final Note note;
-  AddNoteEvent(this.note);
+  const AddNoteEvent(this.note);
+
+  @override
+  List<Object> get props => [note];
 }
 
-final class GetNotesEvent extends HomeEvent {}
+class GetNotesEvent extends HomeEvent {}
 
-final class DeleteNoteEvent extends HomeEvent {
-  final int noteId;
-  DeleteNoteEvent(this.noteId);
-}
+class DeleteAllLcoalNotes extends HomeEvent {}

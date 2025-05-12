@@ -12,8 +12,7 @@ class AuthService {
         return currentUser;
       }
     } catch (e) {
-      print("Authentication failed: $e");
-      return null;
+      throw ("Authentication failed: $e");
     }
     return null;
   }
@@ -33,8 +32,7 @@ class AuthService {
             .createUserWithEmailAndPassword(email: email, password: password);
         return newUserCredential.user; // Return the newly created user
       } catch (e) {
-        print("Authentication failed: $e");
-        return null;
+        throw ("Authentication failed: $e");
       }
     }
   }
@@ -43,7 +41,7 @@ class AuthService {
     try {
       await _firebaseAuth.signOut();
     } catch (e) {
-      print("logout failed: $e");
+      throw ("logout failed: $e");
     }
   }
 }
